@@ -1,0 +1,45 @@
+<h3>Enter your username</h3>
+  <input
+  type="text"
+  class="form-control"
+  [(ngModel)]="userName"
+  (ngModelChange)="setButtonColor()"/>
+
+<h1
+  [ngClass]="{'u-big-font': fontSizeBig}"
+  [ngStyle]="{color: buttonColor}">
+  {{userName}}
+</h1>
+
+
+  <ng-container *ngIf="userName; else noUserName">
+      <button
+      class="btn type-primary"
+      *ngIf="userName"
+      (click)="userName = ''">
+        Empty username
+      </button>
+
+      <button
+        class="btn type-secondary"
+        (click)="fontSizeBig = !fontSizeBig">
+        toggle button font size
+      </button>
+  </ng-container>
+  <ng-template #noUserName>
+    <span>Pease enter a username</span>
+  </ng-template>
+
+  <hr>
+
+  <h3>possible text color</h3>
+  <ul>
+    <li
+      *ngFor="let col of color"
+      [ngStyle]="{color: col}">
+      {{col}}
+    </li>
+  </ul>
+
+
+
